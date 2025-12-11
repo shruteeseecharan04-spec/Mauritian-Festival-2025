@@ -1,65 +1,772 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mauritian Cultural Harmony Festival 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333; }
-    header { background:#e53935; color:white; text-align:center; padding:2rem 1rem; }
-    header h1 { margin:0; font-size:2.5rem; }
-    nav { background:#c62828; text-align:center; padding:0.5rem; }
-    nav a { color:white; margin:0 1rem; text-decoration:none; font-weight:bold; }
-    nav a:hover { text-decoration:underline; }
-    section { padding:2rem 1rem; text-align:center; }
-    .sponsors, .activities { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; margin-top:1rem; }
-    .sponsors img, .activities img { max-width:150px; height:auto; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition:0.3s; }
-    .sponsors img:hover, .activities img:hover { transform:scale(1.05); }
-    footer { background:#333; color:white; text-align:center; padding:1rem; margin-top:2rem; }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mauritian Cultural Harmony Festival 2026</title>
+
+<!-- Fonts & icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --muted:#6b7180;
+    --accent:#ff4b4b;
+    --accent-2:#ff856d;
+    --glass: rgba(255,255,255,0.7);
+    --soft-shadow: 0 10px 30px rgba(15,15,25,0.06);
+  }
+  [data-theme="dark"]{
+    --bg:#0f1220;
+    --card:#0f1724;
+    --muted:#9aa3b2;
+    --accent:#ff6b6b;
+    --accent-2:#ff947a;
+    --glass: rgba(10,12,18,0.6);
+    color: #e6eef8;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0; background:var(--bg); color:var(--text,#111); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed; top:12px; left:50%; transform:translateX(-50%); z-index:1200;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+  backdrop-filter: blur(8px); border-radius:14px; padding:10px 18px; box-shadow:0 6px 20px rgba(10,10,20,0.06);
+  display:flex; gap:12px; align-items:center;
+}
+nav a{color:#111;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;}
+nav a:hover{background:rgba(0,0,0,0.04)}
+nav .right{display:flex;gap:10px;align-items:center}
+
+/* ---------- HERO ---------- */
+.hero {
+  position:relative; min-height:520px; display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  border-bottom-left-radius:24px; border-bottom-right-radius:24px;
+  margin-bottom:28px;
+}
+.hero .bg-image{
+  position:absolute; inset:0; background:url('Belle-Mare-beach.jpg') center/cover no-repeat; filter:brightness(0.6);
+}
+.hero .overlay{
+  position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.38));
+}
+.hero .content{position:relative; z-index:6; text-align:center; color:white; padding:36px; max-width:1100px}
+.hero h1{font-size:44px; letter-spacing:0.2px; margin-bottom:8px; text-shadow:0 8px 30px rgba(0,0,0,0.5)}
+.hero p{font-size:18px; margin:8px 0 18px; opacity:0.95}
+.hero .hero-controls{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+/* animated particles canvas */
+#particles { position:absolute; inset:0; z-index:3; }
+
+/* countdown */
+.countdown{display:flex; gap:12px; justify-content:center; margin-top:14px}
+.countdown .unit{background:var(--glass); padding:10px 14px; border-radius:10px; min-width:84px; font-weight:700; box-shadow:var(--soft-shadow);}
+
+/* ---------- MAIN CONTAINER ---------- */
+.container{width:92%; max-width:1200px; margin:0 auto 60px; position:relative; z-index:5}
+
+/* ---------- SECTIONS (cards) ---------- */
+.section{background:var(--card); border-radius:14px; padding:28px; box-shadow:var(--soft-shadow); margin-bottom:26px}
+.section h2{margin:0 0 18px; text-align:center; font-size:30px}
+
+/* ---------- SPLIT LAYOUT ---------- */
+.split{display:grid; grid-template-columns:1fr 360px; gap:20px}
+@media(max-width:980px){ .split{grid-template-columns:1fr} }
+
+/* ---------- GALLERY ---------- */
+.gallery{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+.gallery img{width:calc(33% - 8px); border-radius:12px; box-shadow:0 10px 30px rgba(10,10,20,0.06); cursor:pointer; transition:transform .25s}
+@media(max-width:900px){ .gallery img{width:48%} }
+@media(max-width:520px){ .gallery img{width:100%} }
+.gallery img:hover{transform:translateY(-6px)}
+
+/* ---------- ARTISTS ---------- */
+.artists{display:flex; gap:14px; justify-content:space-around; flex-wrap:wrap}
+.artist{width:220px; background:linear-gradient(180deg,#fff,#fafafa); border-radius:12px; padding:12px; text-align:center; box-shadow:0 8px 22px rgba(10,10,20,0.05)}
+.artist img{width:100%; height:120px; object-fit:cover; border-radius:8px}
+
+/* ---------- TIMETABLE ---------- */
+.timetable{width:100%; border-collapse:collapse}
+.timetable th, .timetable td{padding:12px; border:1px solid #e6e7ee; text-align:center}
+.timetable th{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; font-weight:700}
+
+/* ---------- TICKETS ---------- */
+.ticket-card{border-radius:12px; padding:14px; text-align:center; border:1px solid #eee}
+.ticket-card h3{margin-bottom:6px}
+.price{font-weight:900; font-size:20px; color:var(--accent-dark,#ff3b3b)}
+.qty{display:flex; gap:8px; align-items:center; justify-content:center; margin-top:10px}
+.button{display:inline-block; padding:10px 14px; border-radius:10px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; cursor:pointer}
+.button.ghost{background:transparent; color:var(--accent); border:2px solid rgba(255,75,75,0.12)}
+
+/* ---------- MODAL ---------- */
+.modal-backdrop{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.45); z-index:1400}
+.modal{width:92%; max-width:520px; background:var(--card); padding:18px;border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.35)}
+.modal label{display:block; font-weight:700; margin-bottom:6px; margin-top:8px}
+.modal input, .modal select{width:100%; padding:10px; border-radius:8px; border:1px solid #dde1ea}
+
+/* ---------- SCHEDULE TABS ---------- */
+.tabs{display:flex; gap:8px; justify-content:center; margin-bottom:12px}
+.tab{padding:8px 14px; border-radius:999px; cursor:pointer; font-weight:700; background:transparent; border:1px solid rgba(0,0,0,0.06)}
+.tab.active{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white}
+
+/* ---------- WEATHER WIDGET ---------- */
+.weather{display:flex; gap:12px; align-items:center; justify-content:center}
+.weather .box{padding:12px 16px; border-radius:12px; background:var(--glass); box-shadow:var(--soft-shadow)}
+
+/* ---------- FAQ ACCORDION ---------- */
+.accordion .item{border-top:1px solid #eee}
+.accordion .q{padding:12px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:700}
+.accordion .a{padding:12px; display:none; color:var(--muted)}
+
+/* ---------- SPONSOR CAROUSEL ---------- */
+.sponsor-track{display:flex; gap:24px; align-items:center; width:100%; overflow:hidden; padding:10px 0}
+.sponsor-item{flex:0 0 auto; width:160px; display:flex; align-items:center; justify-content:center}
+.sponsor-item img{width:140px; height:60px; object-fit:contain; border-radius:8px}
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); z-index:1800}
+.lightbox img{max-width:92%; max-height:86%; border-radius:12px}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials{display:flex; gap:12px; overflow:hidden}
+.testimonial{min-width:260px; padding:14px; background:linear-gradient(180deg,#fff,#fbfbfb); border-radius:12px; box-shadow:var(--soft-shadow)}
+
+/* ---------- FLOATING SOCIALS ---------- */
+.floats{position:fixed; right:18px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:12px; z-index:1600}
+.floats a{width:46px;height:46px;border-radius:12px;background:var(--card);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(10,10,20,0.08);text-decoration:none;color:inherit}
+
+/* ---------- VISITOR COUNTER ---------- */
+.visitor-bubble{position:fixed; left:18px; bottom:18px; background:var(--card); padding:10px 12px; border-radius:12px; box-shadow:var(--soft-shadow); z-index:1500}
+
+/* ---------- DARK MODE TOGGLE ---------- */
+.switch{display:inline-flex; align-items:center; gap:8px; cursor:pointer}
+.switch .dot{width:36px;height:20px;background:#eee;border-radius:999px;position:relative;padding:3px}
+.switch .dot span{position:absolute; top:50%; transform:translateY(-50%); left:4px;width:14px;height:14px;background:white;border-radius:50%; transition:left .25s}
+.switch[data-on="true"] .dot{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.switch[data-on="true"] .dot span{left:18px}
+
+/* ---------- MUSIC PLAYER ---------- */
+.player{display:flex; gap:8px; align-items:center; justify-content:center}
+
+/* responsive tweaks */
+@media(max-width:900px){
+  nav{left:14px; transform:none}
+  .hero h1{font-size:32px}
+  .container{width:94%}
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Mauritian Cultural Harmony Festival 2025</h1>
-  <p>Celebrating culture, music, and community</p>
-</header>
-
-<nav>
-  <a href="#sponsors">Sponsors</a>
-  <a href="#activities">Activities</a>
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#home">Home</a>
   <a href="#about">About</a>
+  <a href="#artists">Artists</a>
+  <a href="#timetable">Timetable</a>
+  <a href="#tickets">Tickets</a>
+  <a href="#location">Location</a>
+  <a href="#sponsors">Sponsors</a>
+
+  <div class="right" style="margin-left:12px">
+    <div class="switch" id="themeSwitch" title="Toggle dark mode" aria-pressed="false" role="button">
+      <div class="dot"><span></span></div>
+    </div>
+    <div style="width:8px"></div>
+    <div class="player" id="playerControls">
+      <button id="playBtn" class="button ghost" style="padding:8px 10px">Play Music</button>
+    </div>
+  </div>
 </nav>
 
-<section id="sponsors">
-  <h2>Our Sponsors</h2>
-  <div class="sponsors">
-    <img src="Sponsor1_Cocacola.jpg" alt="CocaCola Logo">
-    <img src="Sponsor2_island_Haze.png" alt="IslandHaze Logo">
-    <img src="Sponsor3_SBM_BANK.jpg" alt="SBM Bank Logo">
+<!-- HERO -->
+<section class="hero" id="home" aria-label="Hero banner">
+  <canvas id="particles"></canvas>
+  <div class="bg-image"></div>
+  <div class="overlay"></div>
+
+  <div class="content" role="region" aria-labelledby="heroTitle">
+    <h1 id="heroTitle">Mauritian Cultural Harmony Festival 2026</h1>
+    <p>10 January 2026 — Belle Mare Public Beach — 09:00 – 19:00</p>
+
+    <div class="hero-controls">
+      <a href="#tickets" class="button">Get Tickets</a>
+      <a id="addCal" class="button ghost" style="background:transparent">Add to Calendar</a>
+    </div>
+
+    <div class="countdown" role="timer" aria-live="polite" style="margin-top:18px">
+      <div class="unit"><div id="days">--</div><div style="font-size:12px;opacity:0.85">Days</div></div>
+      <div class="unit"><div id="hours">--</div><div style="font-size:12px;opacity:0.85">Hours</div></div>
+      <div class="unit"><div id="minutes">--</div><div style="font-size:12px;opacity:0.85">Minutes</div></div>
+      <div class="unit"><div id="seconds">--</div><div style="font-size:12px;opacity:0.85">Seconds</div></div>
+    </div>
   </div>
 </section>
 
-<section id="activities">
-  <h2>Festival Activities</h2>
-  <div class="activities">
-    <img src="Food.png" alt="Food">
-    <img src="Regatta.webp" alt="Regatta">
-    <img src="Sega.jpg" alt="Sega">
-    <img src="Belle-Mare-beach.jpg" alt="Belle-Mare Beach">
-  </div>
-  <p>Note: Ravanne performance will be live at the festival!</p>
-</section>
+<!-- MAIN CONTENT -->
+<main class="container" id="main">
 
-<section id="about">
-  <h2>About the Festival</h2>
-  <p>The Mauritian Cultural Harmony Festival 2025 brings together music, dance, food, and community activities celebrating the rich heritage of Mauritius. Join us at Belle-Mare beach for a spectacular experience!</p>
-</section>
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2>About the Festival</h2>
+    <p style="text-align:center; color:var(--muted)">
+      The Mauritian Cultural Harmony Festival celebrates Mauritius' music, food, traditional sports, and arts in a beachside festival for all ages.
+    </p>
+  </section>
 
-<footer>
-  <p>&copy; 2025 Mauritian Cultural Harmony Festival. All rights reserved.</p>
+  <!-- GALLERY -->
+  <section class="section" aria-label="Gallery">
+    <h2>Festival Highlights</h2>
+    <div class="gallery" id="gallery">
+      <img src="Sega.jpg" alt="Sega Dance" data-src="Sega.jpg">
+      <img src="Food.png" alt="Food stalls" data-src="Food.png">
+      <img src="Regatta.webp" alt="Regatta" data-src="Regatta.webp">
+    </div>
+  </section>
+
+  <!-- SPLIT: TIMETABLE + SIDE -->
+  <div class="split">
+
+    <!-- TIMETABLE & TABS -->
+    <section class="section" id="timetable" aria-labelledby="timetableTitle">
+      <h2 id="timetableTitle">Event Timetable</h2>
+
+      <div class="tabs" role="tablist" aria-label="Schedule tabs">
+        <div class="tab active" data-tab="music">Music</div>
+        <div class="tab" data-tab="food">Food</div>
+        <div class="tab" data-tab="sports">Sports</div>
+        <div class="tab" data-tab="culture">Culture</div>
+      </div>
+
+      <div id="tabContent">
+
+        <div class="tab-panel" data-panel="music">
+          <table class="timetable" aria-describedby="musicSchedule">
+            <thead><tr><th>Time</th><th>Activity</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>09:00–10:00</td><td>Opening</td><td>Welcome & traditional blessing</td></tr>
+              <tr><td>17:00–19:00</td><td>Closing Concert</td><td>Main stage fusion concert</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-panel" data-panel="food" style="display:none">
+          <table class="timetable" aria-describedby="foodSchedule">
+            <thead><tr><th>Time</th><th>Activity</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>12:00–15:00</td><td>Food Festival</td><td>Street food village & chef demos</td></tr>
+              <tr><td>15:00–17:00</td><td>Taste Challenge</td><td>Local chef cook-off</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-panel" data-panel="sports" style="display:none">
+          <table class="timetable" aria-describedby="sportsSchedule">
+            <thead><tr><th>Time</th><th>Activity</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>10:00–12:00</td><td>Regatta</td><td>Traditional boat race</td></tr>
+              <tr><td>15:00–16:30</td><td>Traditional Games</td><td>Sack race & coconut challenges</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-panel" data-panel="culture" style="display:none">
+          <table class="timetable" aria-describedby="cultureSchedule">
+            <thead><tr><th>Time</th><th>Activity</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>13:30–15:00</td><td>Sega Show</td><td>Professional sega performance</td></tr>
+              <tr><td>16:30–17:00</td><td>Workshops</td><td>Ravanne drumming & craft stalls</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SIDE: Tickets / Weather / Artists -->
+    <aside class="section" style="height:100%" aria-labelledby="ticketsTitle">
+      <h2 id="ticketsTitle" style="text-align:center">Tickets</h2>
+
+      <div class="ticket-card" style="margin-bottom:12px">
+        <h3>Choose ticket</h3>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+          <label style="cursor:pointer"><input type="radio" name="type" value="Adult" checked> Adult</label>
+          <label style="cursor:pointer"><input type="radio" name="type" value="Child"> Child</label>
+          <label style="cursor:pointer"><input type="radio" name="type" value="VIP"> VIP</label>
+        </div>
+        <div class="qty">
+          <span style="margin-right:8px">Qty</span>
+          <select id="ticketQty">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="font-size:13px;color:var(--muted)">Price</div>
+          <div id="ticketPrice" style="font-size:20px;font-weight:900;margin-top:6px">Rs 400</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <button class="button" id="openCheckout">Buy Now</button>
+          <button class="button ghost" id="viewTickets" style="margin-left:8px">My Tickets</button>
+        </div>
+      </div>
+
+      <div class="section" style="padding:14px; margin-top:8px">
+        <h3 style="text-align:center;margin-bottom:8px">Current Weather</h3>
+        <div class="weather" id="weatherBox">
+          <div class="box" id="weatherMain">Loading...</div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center">Belle Mare, Mauritius</div>
+      </div>
+
+      <div class="section" style="padding:14px;margin-top:12px">
+        <h3 style="text-align:center">Featured Artists</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="Sega.jpg" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:8px">
+            <div>
+              <strong>Sega L'îlot</strong><div style="font-size:12px;color:var(--muted)">13:30 — Main Stage</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="Regatta.webp" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:8px">
+            <div>
+              <strong>Coastal Drummers</strong><div style="font-size:12px;color:var(--muted)">17:00 — Beach Stage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div> <!-- end split -->
+
+  <!-- ARTISTS SECTION -->
+  <section class="section" id="artists">
+    <h2>Artist Lineup</h2>
+    <div class="artists">
+      <div class="artist">
+        <img src="Sega.jpg" alt=""><h4 style="margin:10px 0 4px">Sega L'îlot</h4><div style="color:var(--muted)">Traditional Sega</div>
+      </div>
+      <div class="artist">
+        <img src="Regatta.webp" alt=""><h4 style="margin:10px 0 4px">Coastal Drummers</h4><div style="color:var(--muted)">Percussion Ensemble</div>
+      </div>
+      <div class="artist">
+        <img src="Food.png" alt=""><h4 style="margin:10px 0 4px">Local Chefs Collective</h4><div style="color:var(--muted)">Food demos & tasting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <h2>What People Say</h2>
+    <div class="testimonials" id="testimonials">
+      <div class="testimonial">"Amazing vibe — loved the food!" — Asha</div>
+      <div class="testimonial">"Family-friendly and beautiful location." — Raj</div>
+      <div class="testimonial">"Best sega performance ever!" — Leila</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <h2>FAQ</h2>
+    <div class="accordion">
+      <div class="item">
+        <div class="q">Are children allowed? <span>+</span></div>
+        <div class="a">Yes — children under 12 have reduced ticket prices and family areas are available.</div>
+      </div>
+      <div class="item">
+        <div class="q">Can I get a refund? <span>+</span></div>
+        <div class="a">Tickets are non-refundable unless the event is cancelled. See terms at checkout.</div>
+      </div>
+      <div class="item">
+        <div class="q">Is parking available? <span>+</span></div>
+        <div class="a">Limited parking is available; shuttle services will operate from key points in town.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section" id="location">
+    <h2>Location & Map</h2>
+    <div style="border-radius:12px;overflow:hidden"><iframe src="https://www.google.com/maps?q=Belle+Mare+Public+Beach+Mauritius&output=embed" style="width:100%;height:360px;border:0"></iframe></div>
+    <div style="margin-top:12px;text-align:center;color:var(--muted)">Belle Mare Public Beach — easy access and shuttles available</div>
+  </section>
+
+  <!-- SPONSORS CAROUSEL -->
+  <section class="section" id="sponsors">
+    <h2>Our Sponsors</h2>
+    <div style="overflow:hidden; border-radius:12px; padding:10px;">
+      <div class="sponsor-track" id="sponsorTrack">
+        <div class="sponsor-item"><img src="Sponsor1_Cocacola.jpg" alt="CocaCola"></div>
+        <div class="sponsor-item"><img src="Sponsor2_island_Haze.png" alt="IslandHaze"></div>
+        <div class="sponsor-item"><img src="Sponsor3_SBM_BANK.jpg" alt="SBM"></div>
+        <div class="sponsor-item"><img src="Sponsor1_Cocacola.jpg" alt="CocaCola"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:28px; font-size:14px">
+  © 2026 Mauritian Cultural Harmony Festival — Belle Mare • info@harmonyfestival.mu • +230 5255 8899
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox"><img src="" alt=""/></div>
+
+<!-- MODAL for checkout -->
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <h3 id="modalTitle">Complete your purchase</h3>
+
+    <label for="buyerName">Full name</label>
+    <input id="buyerName" type="text" placeholder="Jane Doe" />
+    <label for="buyerEmail">Email</label>
+    <input id="buyerEmail" type="email" placeholder="you@example.com" />
+    <label for="buyerPhone">Phone (optional)</label>
+    <input id="buyerPhone" type="text" placeholder="+230 5xxxxx" />
+
+    <label for="ticketTypeModal">Ticket type</label>
+    <select id="ticketTypeModal">
+      <option value="Adult">Adult — Rs 400</option>
+      <option value="Child">Child — Rs 200</option>
+      <option value="VIP">VIP — Rs 900</option>
+    </select>
+
+    <label for="ticketQtyModal">Quantity</label>
+    <select id="ticketQtyModal">
+      <option>1</option><option>2</option><option>3</option><option>4</option>
+    </select>
+
+    <div style="margin-top:12px; font-weight:800">Total: Rs <span id="modalTotal">0</span></div>
+
+    <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
+      <button class="button ghost" id="cancelBtn">Cancel</button>
+      <button class="button" id="confirmBtn">Pay (simulate)</button>
+    </div>
+
+    <p style="margin-top:10px;font-size:12px;color:var(--muted)">This demo simulates payment and generates printable tickets (no real payment).</p>
+  </div>
+</div>
+
+<!-- FLOATING SOCIALS -->
+<div class="floats" aria-hidden="false">
+  <a href="https://www.instagram.com" target="_blank" title="Instagram" aria-label="Instagram">IG</a>
+  <a href="https://www.facebook.com" target="_blank" title="Facebook" aria-label="Facebook">FB</a>
+  <a href="https://www.tiktok.com" target="_blank" title="TikTok" aria-label="TikTok">TT</a>
+</div>
+
+<!-- VISITOR COUNTER -->
+<div class="visitor-bubble" id="visitorBubble">Visitors: <strong id="visitorCount">1</strong></div>
+
+<script>
+/* =========================
+   Helper + Initialization
+   ========================= */
+const q = sel => document.querySelector(sel);
+const qa = sel => Array.from(document.querySelectorAll(sel));
+
+/* ---------- THEME (dark/light) ---------- */
+const themeSwitch = q('#themeSwitch');
+const applyTheme = (on) => {
+  if(on){ document.documentElement.setAttribute('data-theme','dark'); themeSwitch.setAttribute('data-on','true'); themeSwitch.setAttribute('aria-pressed','true'); }
+  else{ document.documentElement.removeAttribute('data-theme'); themeSwitch.setAttribute('data-on','false'); themeSwitch.setAttribute('aria-pressed','false'); }
+};
+themeSwitch.addEventListener('click', () => {
+  const isOn = themeSwitch.getAttribute('data-on') === 'true';
+  applyTheme(!isOn);
+  localStorage.setItem('mh_theme', (!isOn ? 'dark' : 'light'));
+});
+const savedTheme = localStorage.getItem('mh_theme');
+if(savedTheme === 'dark') applyTheme(true);
+
+/* ---------- PARTICLES in HERO (canvas) ---------- */
+const canvas = q('#particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas(){ canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; }
+function initParticles(){
+  particles = [];
+  const count = Math.floor((canvas.width * canvas.height) / 90000);
+  for(let i=0;i<count;i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: (Math.random()*2)+0.6,
+      vx: (Math.random()-0.5)*0.3,
+      vy: (Math.random()-0.5)*0.3,
+      alpha: 0.25 + Math.random()*0.5
+    });
+  }
+}
+function drawParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(const p of particles){
+    p.x += p.vx; p.y += p.vy;
+    if(p.x < -10) p.x = canvas.width + 10;
+    if(p.x > canvas.width +10) p.x = -10;
+    if(p.y < -10) p.y = canvas.height + 10;
+    if(p.y > canvas.height +10) p.y = -10;
+    ctx.beginPath();
+    ctx.fillStyle = 'rgba(255,255,255,'+p.alpha+')';
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  }
+  requestAnimationFrame(drawParticles);
+}
+window.addEventListener('resize', ()=>{ resizeCanvas(); initParticles(); });
+resizeCanvas(); initParticles(); drawParticles();
+
+/* ---------- COUNTDOWN ---------- */
+const eventTime = new Date('2026-01-10T09:00:00');
+function updateCountdown(){
+  const now = new Date();
+  let diff = Math.max(0, eventTime - now);
+  const days = Math.floor(diff/(1000*60*60*24)); diff -= days*(1000*60*60*24);
+  const hours = Math.floor(diff/(1000*60*60)); diff -= hours*(1000*60*60);
+  const mins = Math.floor(diff/(1000*60)); diff -= mins*(1000*60);
+  const secs = Math.floor(diff/1000);
+  q('#days').textContent = days;
+  q('#hours').textContent = String(hours).padStart(2,'0');
+  q('#minutes').textContent = String(mins).padStart(2,'0');
+  q('#seconds').textContent = String(secs).padStart(2,'0');
+
+  // event reminder demo: if < 3 days show popup (only once)
+  if(days < 3 && !localStorage.getItem('mh_reminder_shown')){
+    setTimeout(()=> alert('Reminder: Festival starts in less than 3 days — don’t forget to get your tickets!'), 800);
+    localStorage.setItem('mh_reminder_shown','1');
+  }
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+
+/* ---------- SCHEDULE TABS ---------- */
+qa('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=> {
+    qa('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = tab.dataset.tab;
+    qa('[data-panel]').forEach(p=> p.style.display = (p.dataset.panel === panel ? 'block' : 'none'));
+  });
+});
+
+/* ---------- GALLERY LIGHTBOX ---------- */
+const lightbox = q('#lightbox');
+qa('.gallery img').forEach(img=>{
+  img.addEventListener('click', ()=> {
+    lightbox.style.display = 'flex';
+    lightbox.querySelector('img').src = img.dataset.src || img.src;
+  });
+});
+lightbox.addEventListener('click', ()=> lightbox.style.display='none');
+
+/* ---------- TICKETS: pricing logic & modal ---------- */
+const prices = { 'Adult':400, 'Child':200, 'VIP':900 };
+function computePrice(type, qty){ return (prices[type] || 400) * qty; }
+const ticketPriceEl = q('#ticketPrice');
+function refreshTicketPriceUI(){
+  const type = q('input[name="type"]:checked').value;
+  const qty = Number(q('#ticketQty').value);
+  ticketPriceEl.textContent = 'Rs ' + computePrice(type,qty);
+}
+qa('input[name="type"]').forEach(i=> i.addEventListener('change', refreshTicketPriceUI));
+q('#ticketQty').addEventListener('change', refreshTicketPriceUI);
+refreshTicketPriceUI();
+
+// open checkout modal
+const modal = q('#modalBackdrop');
+function openModal(preType){
+  modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false');
+  if(preType) q('#ticketTypeModal').value = preType;
+  q('#ticketQtyModal').value = '1';
+  updateModalTotal();
+}
+q('#openCheckout').addEventListener('click', ()=> {
+  openModal(q('input[name="type"]:checked').value);
+});
+q('#cancelBtn').addEventListener('click', ()=> { modal.style.display='none'; modal.setAttribute('aria-hidden','true'); });
+
+// modal total update
+function updateModalTotal(){
+  const t = q('#ticketTypeModal').value;
+  const qn = Number(q('#ticketQtyModal').value);
+  q('#modalTotal').textContent = computePrice(t,qn);
+}
+q('#ticketTypeModal').addEventListener('change', updateModalTotal);
+q('#ticketQtyModal').addEventListener('change', updateModalTotal);
+updateModalTotal();
+
+// confirm (simulate payment)
+q('#confirmBtn').addEventListener('click', ()=>{
+  const name = q('#buyerName').value.trim();
+  const email = q('#buyerEmail').value.trim();
+  if(!name || !email){ alert('Please enter a valid name and email.'); return; }
+  const type = q('#ticketTypeModal').value;
+  const qty = Number(q('#ticketQtyModal').value);
+  const tickets = [];
+  for(let i=0;i<qty;i++){
+    const id = 'TKT-' + Math.random().toString(36).slice(2,10).toUpperCase();
+    tickets.push({id,name,email,type,price:prices[type],date:'10 Jan 2026',venue:'Belle Mare Public Beach'});
+  }
+  // save
+  const saved = JSON.parse(localStorage.getItem('mh_tickets')||'[]');
+  localStorage.setItem('mh_tickets', JSON.stringify(saved.concat(tickets)));
+  modal.style.display='none'; modal.setAttribute('aria-hidden','true');
+  setTimeout(()=> {
+    if(confirm(`${qty} ticket(s) created. Would you like to view and print them now?`)) {
+      openTicketWindow(tickets);
+    }
+  },200);
+});
+
+// view saved tickets
+q('#viewTickets').addEventListener('click', ()=> {
+  const saved = JSON.parse(localStorage.getItem('mh_tickets')||'[]');
+  if(!saved.length) return alert('No saved tickets. Buy one first.');
+  openTicketWindow(saved);
+});
+
+function openTicketWindow(tickets){
+  const w = window.open('','_blank','width=800,height=900,scrollbars=yes');
+  const html = buildTicketsHTML(tickets);
+  w.document.write(html); w.document.close();
+}
+function buildTicketsHTML(tickets){
+  const css = `body{font-family:Poppins,Arial;padding:18px} .ticket{border:1px dashed #ddd;padding:14px;margin-bottom:14px;border-radius:12px;display:flex;gap:12px;align-items:center} .qr img{width:110px;height:110px}`;
+  const parts = tickets.map(t=>{
+    const qr = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(JSON.stringify(t));
+    return `<div class="ticket"><div class="info"><h2>${escapeHtml(t.name)} — ${escapeHtml(t.type)}</h2><div>Ticket ID: <strong>${t.id}</strong></div><div>${t.date} • ${t.venue}</div></div><div class="qr"><img src="${qr}" alt="QR"/></div></div>`;
+  }).join('');
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Your Tickets</title><style>${css}</style></head><body><h1>Your Tickets</h1>${parts}<p><button onclick="window.print()">Print / Save as PDF</button></p></body></html>`;
+}
+function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ---------- WEATHER (Open-Meteo free API) ---------- */
+async function loadWeather(){
+  try{
+    // Belle Mare approx coords: -20.1895, 57.773
+    const lat = -20.1895, lon = 57.773;
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${Math.abs(lat)}&longitude=${lon}&current_weather=true&timezone=Indian/Reunion`);
+    // note: open-meteo expects positive lat for north; we handle via API details — some APIs need sign; if the API fails, fallback will show nothing.
+    const data = await res.json();
+    const cw = data.current_weather || null;
+    if(cw){
+      q('#weatherMain').innerHTML = `<div style="font-weight:700">${cw.temperature}°C</div><div style="font-size:13px;color:var(--muted)">Wind: ${cw.windspeed} km/h</div>`;
+    } else {
+      q('#weatherMain').textContent = 'Weather not available';
+    }
+  }catch(err){
+    q('#weatherMain').textContent = 'Weather unavailable';
+    console.warn('Weather load error',err);
+  }
+}
+loadWeather();
+
+/* ---------- SPONSORS CAROUSEL (auto scroll) ---------- */
+const sponsorTrack = q('#sponsorTrack');
+let sponsorPos = 0;
+function autoScrollSponsors(){
+  sponsorPos += 1;
+  sponsorTrack.style.transform = `translateX(-${sponsorPos}px)`;
+  if(sponsorPos > sponsorTrack.scrollWidth / 2) sponsorPos = 0;
+  requestAnimationFrame(autoScrollSponsors);
+}
+requestAnimationFrame(autoScrollSponsors);
+
+/* ---------- LIGHTWEIGHT TESTIMONIALS SLIDER ---------- */
+let tidx = 0;
+const testEl = q('#testimonials');
+function rotateTestimonials(){
+  tidx = (tidx + 1) % testEl.children.length;
+  testEl.style.transform = `translateX(-${tidx * 272}px)`;
+  setTimeout(rotateTestimonials, 3500);
+}
+setTimeout(rotateTestimonials, 3500);
+
+/* ---------- FAQ ACCORDION ---------- */
+qa('.accordion .item .q').forEach(qel=>{
+  qel.addEventListener('click', ()=>{
+    const a = qel.nextElementSibling;
+    const isOpen = a.style.display === 'block';
+    qa('.accordion .a').forEach(x=> x.style.display = 'none');
+    qa('.accordion .q span').forEach(s=> s.textContent = '+');
+    if(!isOpen){ a.style.display = 'block'; qel.querySelector('span').textContent = '−'; }
+  });
+});
+
+/* ---------- VISITOR COUNTER (fake) ---------- */
+let visitors = Number(localStorage.getItem('mh_visitors')||0);
+visitors += Math.floor(Math.random()*3)+1; // bump on load
+localStorage.setItem('mh_visitors', visitors);
+q('#visitorCount').textContent = visitors;
+
+/* ---------- GALLERY lightbox nav (arrow keys) ---------- */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') q('#lightbox').style.display='none';
+});
+
+/* ---------- ADD TO CALENDAR (generate .ics) ---------- */
+q('#addCal').addEventListener('click', ()=>{
+  const start = new Date('2026-01-10T09:00:00');
+  const end = new Date('2026-01-10T19:00:00');
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','CALSCALE:GREGORIAN','BEGIN:VEVENT',
+    `DTSTAMP:${toICS(new Date())}`,
+    `DTSTART:${toICS(start)}`,
+    `DTEND:${toICS(end)}`,
+    'SUMMARY:Mauritian Cultural Harmony Festival 2026',
+    'DESCRIPTION:Festival at Belle Mare Public Beach',
+    'LOCATION:Belle Mare Public Beach, Mauritius',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\\r\\n');
+  const blob = new Blob([ics], {type:'text/calendar'}); const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'Mauritian-Harmony-2026.ics'; a.click(); URL.revokeObjectURL(url);
+});
+function toICS(d){ return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())+'Z'; }
+function pad(n){ return String(n).padStart(2,'0') }
+
+/* ---------- MUSIC PLAYER ---------- */
+let audio;
+q('#playBtn').addEventListener('click', ()=>{
+  if(!audio){
+    audio = new Audio(); audio.src = 'https://cdn.jsdelivr.net/gh/anars/blank-audio/1sec.mp3'; // silent short fallback; replace with actual hosted audio if you wish
+    audio.loop = true;
+  }
+  if(audio.paused) { audio.play(); q('#playBtn').textContent = 'Pause Music'; }
+  else { audio.pause(); q('#playBtn').textContent = 'Play Music'; }
+});
+
+/* ---------- Sponsor track pause on hover ---------- */
+sponsorTrack.addEventListener('mouseenter', ()=> sponsorTrack.style.transition = 'transform 0.2s');
+sponsorTrack.addEventListener('mouseleave', ()=> sponsorTrack.style.transition = 'transform 0s');
+
+/* ---------- Prevent focus outline for mouse-only users ---------- */
+function handleFirstTab(e){ if(e.key === 'Tab'){ document.body.classList.add('show-focus'); window.removeEventListener('keydown', handleFirstTab); } }
+window.addEventListener('keydown', handleFirstTab);
+
+/* ---------- Utilities & startup ---------- */
+function $(sel){ return document.querySelector(sel); }
+function $$(sel){ return Array.from(document.querySelectorAll(sel)); }
+
+// set modal total initially
+updateModalTotal();
+
+// ensure canvas resized once images load
+window.addEventListener('load', ()=> { resizeCanvas(); initParticles(); drawParticles(); });
+
+/* ---------- Canvas helpers (redraw loop) ---------- */
+// reuse earlier functions with scope
+function resizeCanvas(){ canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; }
+function drawParticles(){ ctx.clearRect(0,0,canvas.width,canvas.height); for(const p of particles){ p.x += p.vx; p.y += p.vy; if(p.x < -10) p.x = canvas.width + 10; if(p.x > canvas.width +10) p.x = -10; if(p.y < -10) p.y = canvas.height + 10; if(p.y > canvas.height +10) p.y = -10; ctx.beginPath(); ctx.fillStyle = 'rgba(255,255,255,'+p.alpha+')'; ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); } requestAnimationFrame(drawParticles); }
+
+</script>
 
 </body>
 </html>
